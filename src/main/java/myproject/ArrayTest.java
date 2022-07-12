@@ -1,4 +1,4 @@
-package Bankprojekt;
+package myproject;
 
 import org.apache.commons.lang3.ArrayUtils;
 public class ArrayTest {
