@@ -7,7 +7,7 @@ public class BankAccount
 	
 	public long getBalance()
 	{
-		System.out.println(balance);
+		
 		return balance;
 	}
 
@@ -19,21 +19,24 @@ public class BankAccount
 			return;
 		}
 		balance = balance + depositValue; 
-		System.out.println("Der neue Kontostand beträgt "+ balance+ " Euro.");
+		System.out.println("Einzahlung vollzogen. Der neue Kontostand beträgt "+ balance+ " Euro.");
 	
 	}
-	public void withdraw(long withdrawValue)
+	
+	public long withdraw(long withdrawValue)
 	{
 		if(withdrawValue<1 && withdrawValue<= balance)
 			{
 				System.out.println("Es kann nur ein positiver Wert abgehoben werden "
 						+ "sowie das Konto nicht überzogen werden , bitte einen anderen Betrag abheben.");
 				
-				return;
+				return balance;
 			}
 		balance = balance - withdrawValue;
-		System.out.println("Der neue Kontostand beträgt "+ balance+ " Euro.");
+		System.out.println("Geld abgehoben.Der neue Kontostand beträgt "+ balance+ " Euro.");
+		return balance;
 	}
+	
 	public void withdraw(long foreignValue, double conversionfactor)
 	{
 		if(foreignValue<1 && foreignValue<= balance)
@@ -42,6 +45,7 @@ public class BankAccount
 			return;
 		}
 	double a = foreignValue*conversionfactor;
+	a = Math.ceil(a);
 	long b = (long) a;
 	if(b>balance)
 	{
@@ -56,13 +60,8 @@ public static void main(String[] args) {
 	
 	BankAccount acc = new BankAccount();
 	acc.getBalance();
-	acc.deposit(-4);
-	acc.deposit(4);
-	acc.getBalance();
-	acc.withdraw(-3);
-	acc.withdraw(3);
-	acc.getBalance();
-	acc.withdraw(-20, 1.5);
+	acc.deposit(1000);
+	acc.withdraw(1, 2.000001);
 	
 	}
 }
