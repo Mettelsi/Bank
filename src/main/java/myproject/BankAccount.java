@@ -2,12 +2,13 @@ package myproject;
 
 public class BankAccount
 {
-	public long balance = 100;
+	public long balance = 0;
 	public long einzahlwert = 1;
 	
-	public void getBalance()
+	public long getBalance()
 	{
 		System.out.println(balance);
+		return balance;
 	}
 
 	public void deposit(long depositValue)
@@ -65,4 +66,3 @@ public static void main(String[] args) {
 	
 	}
 }
-
