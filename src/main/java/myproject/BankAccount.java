@@ -3,7 +3,14 @@ package myproject;
 public class BankAccount
 {
 	public long balance = 0;
-	public long einzahlwert = 1;
+	public long einzahlwert = 0;
+	public BankAccount acc2;
+	public BankAccount acc3;
+	
+	public BankAccount(long balance)
+	{
+		this.balance = balance;
+	}
 	
 	public long getBalance()
 	{
@@ -55,13 +62,16 @@ public class BankAccount
 		balance = balance - b;
 		System.out.println("Der neue Kontostand beträgt "+ balance+ " Euro.");
 	}
+	
+	public void transfer()
+	{
+		
+	}
 
 public static void main(String[] args) {
 	
-	BankAccount acc = new BankAccount();
-	acc.getBalance();
-	acc.deposit(1000);
-	acc.withdraw(1, 2.000001);
+	BankAccount acc = new BankAccount(1000);
 	
 	}
 }
+
