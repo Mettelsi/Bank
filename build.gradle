@@ -1,0 +1,25 @@
+plugins {
+ id 'java-library'
+ id 'application'
+}
+application {
+ mainClass = 'myprojecttests.BankAccountTests'
+}
+repositories {
+ mavenCentral()
+}
+dependencies {
+ implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+ testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+test {
+ include 'myprojecttests.BankAccountTests'
+}
+jar {
+ manifest {
+ attributes "Main-Class": "myprojecttests.BankAccountTests"
+ }
+ from {
+ configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+ }
+}
