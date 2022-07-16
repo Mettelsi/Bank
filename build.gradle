@@ -8,6 +8,13 @@ application {
 task myJavadocs(type: Javadoc) {
   source = 'myproject.BankAccount'
 }
+task myZip(type: Zip) {
+   from 'Bankprojekt/*'
+   include '*'
+   include '*/*' //to include contents of a folder present inside Reports directory
+   archiveName 'Abschlussprojekt.zip'
+   destinationDir(file('Bankprojekt'))
+}
 repositories {
  mavenCentral()
 }
