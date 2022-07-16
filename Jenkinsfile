@@ -6,6 +6,9 @@ pipeline {
  sh 'echo "Building.."'
  sh './gradlew build -x test'
  }
+post{
+success{
+archive " Bankprojekt.jar"
  }
  stage('Test'){
  steps{
