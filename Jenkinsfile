@@ -1,4 +1,4 @@
-pipeline {
+pipeline{
  agent any
  stages {
  stage('Build'){
@@ -28,8 +28,8 @@ archive " Bankprojekt.jar"
 steps {
                 
                 sh 'echo test > archive/test.txt'
-                zip zipFile: 'test2.zip', archive: false, dir: 'archive'
-                archiveArtifacts artifacts: 'test2.zip', fingerprint: true
+                zip zipFile: 'test3.zip', archive: true, dir: 'archive'
+                archiveArtifacts artifacts: 'test3.zip', fingerprint: true
             }
 } 
 }
