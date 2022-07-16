@@ -19,7 +19,7 @@ pipeline {
  sh './gradlew javadoc'
  } 
 }
- stage('Deployment Zip){
+ stage('Deployment Zip'){
 steps {
                 sh 'mkdir archive'
                 sh 'echo test > archive/test.txt'
