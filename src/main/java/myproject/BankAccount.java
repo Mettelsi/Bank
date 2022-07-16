@@ -6,7 +6,7 @@ import java.util.Random;
 
  /**
  * @author Marius
- *
+ * Klasse welche verschiedene transaktionen sowie getter und setter umfasst.
  */
 public class BankAccount
 {
@@ -23,8 +23,13 @@ public class BankAccount
 	
 	
 	
+	
 	/**
-	 * @param balance
+	 * Konstruktor
+	 * 
+	 * @param kontonummer fungiert als Pseudo privat-key und ersetzt "createaccount".
+	 * 
+	 * @param balance  Gewünschtes Guthaben eines neuerstellten Accounts.
 	 */
 	public BankAccount(int kontonummer, long balance)
 	{
@@ -38,15 +43,22 @@ public class BankAccount
 	}
 	
 	/**
-	 * @return
+	 * ersetzt "create account"
+	 * 
+	 * @return Gibt private-key zurück
 	 */
 	public int getKontonummer()
 	{
 		return kontonummer;
 	}
 	
+	
+
 	/**
-	 * @return
+	 * @param kontonummer für welches Konto
+	 
+	 * @return Kontostand zurückgeben
+	 * 
 	 */
 	public long getBalance(int kontonummer)
 	{
@@ -56,6 +68,13 @@ public class BankAccount
 		return balance;
 	}
 	
+	/**
+	 * für einen möglichen Log In wird ein 4 stelliger Pin zufällig generiert.
+	 * 
+	 * @param kontonummer zuordnung
+	 * 
+	 * @return pin zurückgegeben
+	 */
 	private String getPin(int kontonummer)
 	{
 		    ArrayList<Object> liste= konten.get(kontonummer);
@@ -63,6 +82,16 @@ public class BankAccount
 			return pin;	
 	}
 	
+	/**
+	 * für Überweisung an anderes Konto technisch notwendig. Aus der Hashmap die alles speichert wird die 
+	 * passende Liste für das jeweilig passende Konto abgefragt.
+	 * 
+	 * @param kontonummer für welches Konto
+	 * 
+	 * @param konten aus Hashmap
+	 * 
+	 * @return ArrayList zurückgegeben
+	 */
 	public ArrayList<Object> getArrayList(int kontonummer,HashMap<Integer, ArrayList<Object>> konten)
 	{
 		ArrayList<Object> account = konten.get(kontonummer);
@@ -70,13 +99,14 @@ public class BankAccount
 		return account;
 	}
 	
-	public long getAmount(long kontonr)
-	{
-		return amount;
-	}
+	
 	
 	/**
-	 * @param depositValue
+	 * Einzahlen auf bestimmtes Konto (vor Ort)
+	 * 
+	 * @param depositValue Einzahlwert
+	 * 
+	 * @param kontonummer auf welches Konto
 	 */
 	public void deposit(long depositValue, int kontonummer)
 	{
@@ -92,9 +122,15 @@ public class BankAccount
 		System.out.println("Einzahlung vollzogen. Der neue Kontostand beträgt "+ balance+ " Euro.");
 	}
 
+	
 	/**
-	 * @param withdrawValue
-	 * @return
+	 * Abheben eines Betrages
+	 * 
+	 * @param withdrawValue positiver Wert zum Abheben
+	 * 
+	 * @param kontonummer welchen welchen Konto
+	 * 
+	 * @return neuer Kontostand
 	 */
 	public long withdraw(long withdrawValue, int kontonummer)
 	{
@@ -112,9 +148,17 @@ public class BankAccount
 		return balance;
 	}
 	
+	
 	/**
-	 * @param foreignValue
-	 * @param conversionfactor
+	 * Abheben eines Betrages in fremder Währung
+	 * 
+	 * @param foreignValue Wert zum Abheben
+	 * 
+	 * @param conversionfactor Umrechnungsrate
+	 * 
+	 * @param kontonummer von welchem Konto
+	 * 
+	 * @return Kontostand
 	 */
 	public long withdraw(long foreignValue, double conversionfactor, int kontonummer)
 	{
@@ -141,6 +185,17 @@ public class BankAccount
 		
 	}
 	
+	/**
+	 * Nutzer überweist Betrag auf ein anderes Konto
+	 * 
+	 * @param kontonummer Konto des Nutzers
+	 * 
+	 * @param kontonummer2 Zielkonto
+	 * 
+	 * @param amount Betragswert
+	 * 
+	 * @param acc benötigt für technische implementierung um Arrayliste aufzurufen
+	 */
 	public void transfer(int kontonummer, int kontonummer2, long amount, BankAccount acc)
 	{
 		ArrayList<Object>liste2 = acc.getArrayList(kontonummer2, konten);
@@ -159,7 +214,10 @@ public class BankAccount
 		konten.replace(kontonummer2, liste2);
 		System.out.println("Überweisung vollzogen");
 	}
-
+	
+	/**
+	 * @param args main
+	 */
 	public static void main(String[] args) {
        
 		BankAccount bank= new BankAccount(1234567891, 50000000);
