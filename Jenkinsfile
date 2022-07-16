@@ -1,7 +1,7 @@
 pipeline {
  agent any
  stages {
- stage('Build') {
+ stage('Build'){
  steps {
  sh 'echo "Building.."'
  sh './gradlew build -x test'
@@ -18,6 +18,14 @@ pipeline {
  sh 'echo "create Javadoc .."'
  sh './gradlew javadoc'
  } 
+}
+ stage('Deployment Zip){
+steps {
+                sh 'mkdir archive'
+                sh 'echo test > archive/test.txt'
+                zip zipFile: 'test.zip', archive: false, dir: 'archive'
+                archiveArtifacts artifacts: 'test.zip', fingerprint: true
+            }
 } 
 }
 }
