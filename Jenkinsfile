@@ -12,10 +12,12 @@ pipeline {
  sh 'echo "Testing..."'
  sh './gradlew test'
  }
+}
  stage('JavaDoc'){
  sh 'echo "create Javadoc .."'
  sh './gradlew javadoc'
  } 
- }
- }
+} 
 }
+ 
+
