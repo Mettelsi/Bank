@@ -16,18 +16,12 @@ distributions {
             from 'src/main/java/myproject'
 	    from 'src/test/java/myprojecttests'
 	    from 'build/libs'
-            from 'build/docs/javadocs'
-distributions {
-    main {
-        distributionBaseName = 'someName'
-        contents {
-            from 'src/readme'
-        }
-        } 
+            from 'build/docs'
+            from 'Bankprojekt' 
         }
     }
 }
-}
+
 repositories {
  mavenCentral()
 }
