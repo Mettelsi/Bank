@@ -5,9 +5,16 @@ plugins {
 application {
  mainClass = 'myproject.BankAccount'
 }
+task myJavadocs(type: Javadoc) {
+  source = 'myproject.BankAccount'
+}
 repositories {
  mavenCentral()
 }
+configurations {
+  jaxDoclet
+}
+
 dependencies {
  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
  testImplementation group: 'junit', name: 'junit', version: '4.12'
