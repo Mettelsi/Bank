@@ -10,6 +10,7 @@ post{
 success{
 archive " Bankprojekt.jar"
  }
+}
  stage('Test'){
  steps{
  sh 'echo "Testing..."'
